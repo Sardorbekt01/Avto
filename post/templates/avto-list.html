@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card-body">
+    <h4>Avto list</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Model</th>
+                <th scope="col">Color</th>
+                <th scope="col">Price</th>
+                <th scope="col">About</th>
+                <th scope="col">Year</th>
+                <th scope="col">Action</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for avto in avtos %}
+            <tr>
+                <td>{{ avto.model }}</td>
+                <td>{{ avto.color }}</td>
+                <td>{{ avto.price }}</td>
+                <td>{{ avto.year }}</td>
+                <td><a type="button" class="btn btn-warning" href="/avto-update/{{ avto.id }}">Update</a>
+                    <a type="button" class="btn btn-danger" href="/avto-delete/{{ avto.id }}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a type="button" class="btn btn-success" href="{%url 'avto-create' %}">Create</a>
+</div>
+{% endblock %}
